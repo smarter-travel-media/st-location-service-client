@@ -1,0 +1,6 @@
+{
+  "options": {
+      "outdir": "docs/st-location-service-client",
+      "paths": ["src/", "src/**"]
+  }
+}
