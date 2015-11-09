@@ -5,6 +5,7 @@ A js client for the location-service.
 
 ## Usage
 Currently this client only supports location suggestion for typeahead location.
+
 ```js
 import {ClientConfig, Client, LocationSuggestRequest} from "st-location-service-client";
 const clientConfig = new ClientConfig().withBaseUrl("http://location-service-url.com");
