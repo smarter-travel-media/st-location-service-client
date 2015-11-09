@@ -14,7 +14,7 @@ const locationSuggestRequest = new LocationSuggestRequest()
     .withLocale("en")
     .withQuery("Bos")
     .withLocationTypes([10004,10038])
-    .withCompound(false);
+    .withCompoundLocations(false);
 const onSuccess = function (arrayOfLocationSuggestOjects) {
   ...
 };
