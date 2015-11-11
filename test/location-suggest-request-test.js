@@ -29,7 +29,7 @@ describe("LocationSuggestRequest", function() {
     request.withLocationTypes([10004])
       .withQuery("Bos")
       .withLocale("en");
-    expect(request.createRequest()).to.equal("/en/suggest/type=10004/?query=Bos");
+    expect(request.createRequest()).to.equal("en/suggest/type=10004/?query=Bos");
   });
 
   it("Creates a valid url with compound", function() {
@@ -38,6 +38,6 @@ describe("LocationSuggestRequest", function() {
       .withQuery("Bos")
       .withLocale("en")
       .withCompoundLocations(false);
-    expect(request.createRequest()).to.equal("/en/suggest/type=10004/?query=Bos&compound=0");
+    expect(request.createRequest()).to.equal("en/suggest/type=10004/?query=Bos&compound=0");
   });
 });

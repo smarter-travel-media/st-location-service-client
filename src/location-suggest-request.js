@@ -13,23 +13,6 @@ import ClientRequest from "./client-request";
 class LocationSuggestRequest extends ClientRequest {
 
   /**
-   * The locale of the request.
-   * @attribute locale
-   * @type String
-   * @required
-   */
-  /**
-   * @method withLocale
-   * @required
-   * @param {String} the locale the request is made for
-   * @return {LocationSuggestRequest}
-   */
-  withLocale(locale) {
-    this.locale = locale;
-    return this;
-  }
-
-  /**
    * An array of location type ids that suggestions should be returned for
    * @attribute locationTypes
    * @type Array
@@ -64,24 +47,6 @@ class LocationSuggestRequest extends ClientRequest {
   }
 
   /**
-   * A boolean flag to toggle returning the locations city or airport with each
-   * returned location
-   * @attribute compound
-   * @type Boolean
-   * @required
-   */
-  /**
-   * @method withCompoundLocations
-   * @required
-   * @param {Boolean} a flag for returning compound location types or not
-   * @return {LocationSuggestRequest}
-   */
-  withCompoundLocations(compound) {
-    this.compound = compound;
-    return this;
-  }
-
-  /**
    * @override
    */
   createRequest() {
@@ -89,13 +54,13 @@ class LocationSuggestRequest extends ClientRequest {
       throw "Missing required data for location suggest request";
     }
 
-    let query = this.query;
-    let locationTypes = this.locationTypes.join(",");
-    let locale = this.locale;
-    let requestUrl = `/${locale}/suggest/type=${locationTypes}/?query=${query}`;
+    var query = encodeURIComponent(this.query);
+    var locationTypes = this.locationTypes.join(",");
+    var locale = encodeURIComponent(this.locale);
+    var requestUrl = `${locale}/suggest/type=${locationTypes}/?query=${query}`;
 
     if (typeof this.compound != "undefined") {
-      let compound = this.compound ? 1 : 0;
+      var compound = this.compound ? 1 : 0;
       requestUrl += `&compound=${compound}`;
     }
 

@@ -37,7 +37,7 @@ class Client {
    * @param {Function} onError the function to be called on error
    */
    executeRequest(request, onSuccess, onError) {
-     let url = this.clientConfig.baseUrl + "/" + request.createRequest();
+     var url = this.clientConfig.baseUrl + "/" + request.createRequest();
      nanoajax.ajax({
        url: url,
        cors: true,
