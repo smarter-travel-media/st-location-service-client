@@ -4,7 +4,7 @@
  import nanoajax from "nanoajax";
 
 /**
- * The client that makes location service
+ * The client that makes location service requests.
  *
  * @class Client
  * @constructor
