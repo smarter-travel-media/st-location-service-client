@@ -55,7 +55,7 @@ class LocationSuggestRequest extends ClientRequest {
     }
 
     var query = encodeURIComponent(this.query);
-    var locationTypes = this.locationTypes.join(",");
+    var locationTypes = this.locationTypes.map((locationType) => { return encodeURIComponent(locationType); }).join(",");
     var locale = encodeURIComponent(this.locale);
     var requestUrl = `${locale}/suggest/type=${locationTypes}/?query=${query}`;
 
