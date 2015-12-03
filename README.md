@@ -42,6 +42,9 @@ grunt watch
 ```
 As you make changes to the code your files will be automatically linted and the unit tests will be run.
 
+### Integration tests
+npm run itest -- --svc_url=<location-service-url>
+
 ### Generate docs
 To generate yui docs at the projects name at http://sites.smartertravel.net/projects/st-location-service-client/
 ```bash

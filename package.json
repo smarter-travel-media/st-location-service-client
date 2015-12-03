@@ -53,9 +53,12 @@
     "registry": "https://artifactory.smartertravel.net/artifactory/api/npm/npm-local"
   },
   "scripts": {
-    "test": "karma start",
+    "test": "npm run karma-unit",
+    "itest": "grunt itest",
     "compile": "babel src --out-dir npm",
-    "docs": "mkdir -p docs/st-location-service-client && yuidoc -e .js,.jsx && scp -r docs/st-location-service-client sites.smartertravel.net:/var/www/projects/projects/ && rm -rf docs"
+    "docs": "mkdir -p docs/st-location-service-client && yuidoc -e .js,.jsx && scp -r docs/st-location-service-client sites.smartertravel.net:/var/www/projects/projects/ && rm -rf docs",
+    "karma-unit": "karma start karma.unit.conf.js",
+    "karma-itest": "karma start karma.integration.conf.js"
   },
   "dependencies": {
     "nanoajax": "^0.4.0"

@@ -7,6 +7,10 @@ module.exports = function(grunt, configs) {
       cmd: "npm",
       args: ["test"]
     },
+    itest: {
+      cmd: "npm",
+      args: ["run", "karma-itest"]
+    },
     babel: {
       cmd: "npm",
       args: ["run", "compile"]

@@ -44,7 +44,13 @@ class Client {
        method: "GET"
      }, function (responseCode, responseText) {
        if (responseCode === 200) {
-         onSuccess(JSON.parse(responseText));
+         var responseJson;
+         try {
+           responseJson = JSON.parse(responseText);
+         } catch (error) {
+           onError(responseText);
+         }
+         onSuccess(responseJson);
        } else {
          onError(responseText);
        }

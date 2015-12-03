@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import {LocationSuggestRequest} from "../src/index";
+import {LocationSuggestRequest} from "../../src/index";
 
 describe("LocationSuggestRequest", function() {
   it("constructs without error", function() {

@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import nanoajax from "nanoajax";
 import sinon from "sinon";
-import {Client, ClientConfig, LocationSuggestRequest} from "../src/index";
+import {Client, ClientConfig, LocationSuggestRequest} from "../../src/index";
 
 describe("Client", function() {
   var client;
