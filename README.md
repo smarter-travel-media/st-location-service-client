@@ -7,7 +7,7 @@ A js client for the location-service.
 Currently this client only supports location suggestion for typeahead location.
 
 ```js
-import {ClientConfig, Client, LocationSuggestRequest} from "st-location-service-client";
+import {ClientConfig, Client, LocationSuggestRequest, ProximityRequest} from "st-location-service-client";
 const clientConfig = new ClientConfig().withBaseUrl("http://location-service-url.com");
 const client = new Client(clientConfig);
 const locationSuggestRequest = new LocationSuggestRequest()
@@ -15,6 +15,12 @@ const locationSuggestRequest = new LocationSuggestRequest()
     .withQuery("Bos")
     .withLocationTypes([10004,10038])
     .withCompoundLocations(false);
+const proximityRequest = new ProximityRequest()
+    .withLocale("en")
+    .withLocationTypes([10004,10038])
+    .withCompoundLocations(false)
+    .withRadius(100, "mi")
+    .fromTaId(60745);
 const onSuccess = function (arrayOfLocationSuggestOjects) {
   ...
 };
@@ -24,6 +30,7 @@ const onError = function (errorMessage) {
 };
 
 client.suggestLocations(locationSuggestRequest, onSuccess, onError);
+client.findLocationByProximity(proximityRequest, onSuccess, onError);
 ```
 
 ## Developing

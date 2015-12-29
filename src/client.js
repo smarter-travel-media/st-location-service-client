@@ -19,13 +19,25 @@ class Client {
   /**
    * Returns a list of locations that match the provided suggest query.
    * @method suggestLocations
-   * @param locationSuggestRequest the request object that
+   * @param {LocationSuggestRequest} locationSuggestRequest the request object
    * @param {Function} onSuccess a function that takes an array  of location suggest objects.
    * @param {Function} onError a function that should be called if the request fails.
    *                  The function should take a string which is the error message if there is one.
    */
   suggestLocations(locationSuggestRequest, onSuccess, onError) {
     this.executeRequest(locationSuggestRequest, onSuccess, onError);
+  }
+
+  /**
+   * Returns a list of locations that match the provided proximity query.
+   * @method findLocationByProximity
+   * @param {ProximityRequest} proximityRequest the request object
+   * @param {Function} onSuccess a function that takes an array  of location suggest objects.
+   * @param {Function} onError a function that should be called if the request fails.
+   *                  The function should take a string which is the error message if there is one.
+   */
+  findLocationByProximity(proximityRequest, onSuccess, onError) {
+    this.executeRequest(proximityRequest, onSuccess, onError);
   }
 
   /**
