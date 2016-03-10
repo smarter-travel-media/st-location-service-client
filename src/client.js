@@ -44,7 +44,8 @@ class Client {
    * Returns locations matching the IDs specified in the request.
    * @method findByTAID
    * @param {TAIDRequest} request
-   * @param {Function} onSuccess takes an object mapping ids to locations
+   * @param {Function} onSuccess takes an object mapping ids to locations; ids that could
+   * not be mapped will not be present as keys
    * @param {Function} onError called on failure (e.g. 500 response code); passed the response body
    */
   findByTAID(request, onSuccess, onError) {
