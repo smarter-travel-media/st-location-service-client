@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import nanoajax from "nanoajax";
 import sinon from "sinon";
-import {Client, ClientConfig, LocationSuggestRequest, ProximityRequest} from "../../src/index";
+import {Client, ClientConfig, LocationSuggestRequest, ProximityRequest, TAIDRequest} from "../../src/index";
 
 describe("Client", function() {
   var client;
@@ -80,5 +80,30 @@ describe("Client", function() {
 
     nanoajax.ajax.restore();
     done();
+  });
+
+  describe("#findByTAID", function() {
+    beforeEach(function() {
+      this.request = new TAIDRequest().withLocale("en").withIDs([4242]);
+      this.onSuccess = sinon.spy();
+      this.onError = sinon.spy();
+      sinon.stub(nanoajax, "ajax");
+    });
+
+    afterEach(function() {
+      nanoajax.ajax.restore();
+    });
+
+    it("makes a successful request", function() {
+      nanoajax.ajax.callsArgWith(1, 200, "{}");
+      client.findByTAID(this.request, this.onSuccess, this.onError);
+      sinon.assert.calledWith(this.onSuccess, {});
+    });
+
+    it("makes an errorful request", function() {
+      nanoajax.ajax.callsArgWith(1, 500, "");
+      client.findByTAID(this.request, this.onSuccess, this.onError);
+      sinon.assert.called(this.onError);
+    });
   });
 });

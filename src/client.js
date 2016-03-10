@@ -41,6 +41,30 @@ class Client {
   }
 
   /**
+   * Returns locations matching the IDs specified in the request.
+   * @method findByTAID
+   * @param {TAIDRequest} request
+   * @param {Function} onSuccess takes an object mapping ids to locations
+   * @param {Function} onError called on failure (e.g. 500 response code); passed the response body
+   */
+  findByTAID(request, onSuccess, onError) {
+    this.ajax(request, function(responseCode, responseText) {
+      if (responseCode === 200) {
+        try {
+          onSuccess(JSON.parse(responseText));
+        } catch(e) {
+          onError(responseText);
+        }
+      } else if (responseCode === 404) {
+        // special case for ID requests: service 404s if none of the IDs were found
+        onSuccess({});
+      } else {
+        onError(responseText);
+      }
+    });
+  }
+
+  /**
    * This method adds the base url to the constructed client request and then
    * binds the on success and error functions to the request.
    * @method executeRequest
@@ -49,12 +73,7 @@ class Client {
    * @param {Function} onError the function to be called on error
    */
    executeRequest(request, onSuccess, onError) {
-     var url = this.clientConfig.baseUrl + "/" + request.createRequest();
-     nanoajax.ajax({
-       url: url,
-       cors: true,
-       method: "GET"
-     }, function (responseCode, responseText) {
+     this.ajax(request, function (responseCode, responseText) {
        if (responseCode === 200) {
          var responseJson;
          try {
@@ -67,6 +86,20 @@ class Client {
          onError(responseText);
        }
      });
+   }
+
+   /**
+    * @private
+    * @property {ClientRequest} request
+    * @property {Function} cb function(responseCode, responseText) { ... }
+    */
+   ajax(request, cb) {
+     var url = this.clientConfig.baseUrl + "/" + request.createRequest();
+     nanoajax.ajax({
+       url: url,
+       cors: true,
+       method: "GET"
+     }, cb);
    }
 }
 

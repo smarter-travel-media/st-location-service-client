@@ -8,3 +8,4 @@
  export {default as ClientRequest} from "./client-request";
  export {default as ClientConfig} from "./client-config";
  export {default as ProximityRequest} from "./proximity-request";
+ export {default as TAIDRequest} from "./ta-id-request";
