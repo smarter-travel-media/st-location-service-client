@@ -1,6 +1,6 @@
 {
   "name": "st-location-service-client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A npm module for use by ST",
   "author": "SmarterTravel",
   "main": "index.js",
