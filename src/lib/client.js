@@ -17,6 +17,18 @@ class Client {
   }
 
   /**
+   * An accommodation list for a geo
+   * @method accommodationsByGeo
+   * @param {AccommodationsByGeoRequest} request the request object
+   * @param {Function} onSuccess a function that takes an array  of location suggest objects.
+   * @param {Function} onError a function that should be called if the request fails.
+   *                  The function should take a string which is the error message if there is one.
+   */
+  accommodationsByGeo(request, onSuccess, onError) {
+    this.executeRequest(request, onSuccess, onError);
+  }
+
+  /**
    * Returns a list of locations that match the provided suggest query.
    * @method suggestLocations
    * @param {LocationSuggestRequest} locationSuggestRequest the request object

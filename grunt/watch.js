@@ -4,7 +4,7 @@
 module.exports = function(grunt, configs) {
   return {
     scripts: {
-      files: ["test/*.js", "test/*.jsx", "src/**"],
+      files: ["test/**", "src/**"],
       tasks: ["test"]
     }
   };
