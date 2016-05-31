@@ -144,7 +144,7 @@ class AccommodationsByGeoRequest extends ClientRequest {
       vars.subtype = this.subTypeIds.join(",");
     }
 
-    if (this.priceRange && this.priceRange.low && this.priceRange.high && this.priceRange.currencyCode) {
+    if (this.priceRange && this.priceRange.low !== "undefined" && this.priceRange.high !== "undefined" && this.priceRange.currencyCode) {
       vars.price = `${this.priceRange.low}-${this.priceRange.high}${this.priceRange.currencyCode}`;
     }
 
