@@ -71,7 +71,8 @@ describe("AccommodationsByGeoRequest", function() {
       .withPriceRange(0, 300, "USD")
       .withSubTypeIds([1,2,3,4])
       .withExcludedIds([4,3,2,1])
+      .withAmenityIds([34,15])
       .withStarRatings([30,35,40,45,50]);
-    expect(request.createRequest()).to.equal("en/ids/ta/60745/accommodations;subtype=1%2C2%2C3%2C4;price=0-300USD;exclude=4%2C3%2C2%2C1;stars=30%2C35%2C40%2C45%2C50?compound=0");
+    expect(request.createRequest()).to.equal("en/ids/ta/60745/accommodations;subtype=1%2C2%2C3%2C4;price=0-300USD;exclude=4%2C3%2C2%2C1;stars=30%2C35%2C40%2C45%2C50;amenities=34%2C15?compound=0");
   });
 });

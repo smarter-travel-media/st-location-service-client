@@ -156,6 +156,10 @@ class AccommodationsByGeoRequest extends ClientRequest {
       vars.stars = this.starRatings.join(",");
     }
 
+    if (this.amenityIds && this.amenityIds.length) {
+      vars.amenities = this.amenityIds.join(",");
+    }
+
     return vars;
   }
 
